@@ -5,24 +5,30 @@
 int mylen(char *);
 char* mycpy(char *, char *);
 int mycmp(char *, char *);
-char* mycat(char *, char *);
+char* mycat(char *, char *, int);
 int palind(char *);
 int identi(char *);
 int numb(char *);
 int retNumb(char *, int *);
+void spaces(char *);
 
 void main(){
-    char s[100], s2[100], n = 0;
+    char s[100], s2[100], s3[100];
+    int n = 0;
     gets(s);
-    gets(s2);
-    printf("\nMyLen %d", mylen(s));
+    //gets(s2);
+    gets(s3);
+    /*printf("\nMyLen %d", mylen(s));
     printf("\nMyCmp %d", mycmp(s,s2));
     printf("\nPalind %d", palind(s));
-    printf("\nIdenti %d", identi(s));
+    */printf("\nIdenti %d", identi(s));/*
     printf("\nNumb %d", numb(s));
-    printf("\nMyCat %s", mycat(s,s2));
+    printf("\nMyCat %s", mycat(s,s2,0));
     printf("\nMyCpy %s", mycpy(s,s2));
-    printf("\nRetNumb %d %d", retNumb(s,&n), n);
+  */if(retNumb(s3,&n)) printf("\nRetNumb %d",n) ;
+    else printf("NO");
+    printf("\n %d",'*');
+    //spaces(s3);
 }
 
 int mylen(char *s){ //strlen
@@ -43,9 +49,9 @@ int mycmp(char *s, char *s2){ //strcmp
     return 0;
 }
 
-char* mycat(char *s, char *s2){ //strcat
+char* mycat(char *s, char *s2, int a){ //strcat
     int c = mylen(s);
-    for (int i = 0; s2[i] != '\0' ;i++,c++) s[c] = s2[i];
+    for (int i = a; s2[i] != '\0' ;i++,c++) s[c] = s2[i];
     s[c] = 0;
     return s;
 }
@@ -65,10 +71,11 @@ int palind(char *s){ //ifSymetric
 }
 
 int identi(char *s){ //ifIdentificator
-    if (('a' <= s[0] && s[0] <= 'z') || ('A' <= s[0] && s[0] <= 'Z') || s[0] == '_')
+    if (('a' <= s[0] && s[0] <= 'z') || ('A' <= s[0] && s[0] <= 'Z') || s[0] == '_'){
         for (int i = 1; i < strlen(s); i++)
-            if (('a' <= s[i] && s[i] <= 'z') || ('A' <= s[i] && s[i] <= 'Z' ) || ( '0' <= s[i] && s[i] <= '9') || s[i] == '_') return 1;
-        else return 0;
+            if (!('a' <= s[i] && s[i] <= 'z') || ('A' <= s[i] && s[i] <= 'Z' ) || ( '0' <= s[i] && s[i] <= '9') || s[i] == '_') return 0;
+        return 1;
+    }
     else return 0;
 }
 
@@ -88,11 +95,25 @@ int numb(char *s){ //ifNumber
 int retNumb(char *s, int *n){ //atoi
     *n = 0;
     if(numb(s)){
-        for (int i = 0; i < mylen(s); i++){
-            *n = *n * 10 + (s[i] - '0');
+        if(s[0] == '-' || s[0] == '+'){
+            for (int i = 1; i < mylen(s); i++){
+                *n = ((*n) + (s[i] - '0')) * 10;
+            }
+        }else{
+            for (int i = 1; i < mylen(s); i++){
+                *n = ((*n) + (s[i] - '0')) * 10;
+            }
         }
-        if(s[0] == '-') *n = -*n;
+        if(s[0] == '-') *n = -(*n);
         return 1;
+    }else return 0;
+}
+
+void spaces(char *s1){
+    char s2[] = {s1};
+    if (s1[0] == ' ') mycat(s1,s2,1);
+    for (int i = 0; i < mylen(s1); i++){
+        continue;
     }
-    return 0;
+    puts(s1);
 }
