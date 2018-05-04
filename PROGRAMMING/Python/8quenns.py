@@ -22,13 +22,13 @@ def chessBoard(x):
         t.goto(-a,z)
         t.pendown()
         z += 50
-class Board():
-    def posibility(self):
-        return 1
-    def draw(self):
-        if possibility:
-            chessBoard((int(input("Input table")))
-#chessBoard(int(input("Input table")))
-a = Board()
-d.draw()
+
+chessBoard(int(input("Input table")))
+
 input()
+#class Board():
+#def posibility(self):
+#    return 1
+#def draw(self):
+#    if possibility:
+#        chessBoard((int(input("Input table")))
