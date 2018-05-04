@@ -25,14 +25,7 @@ class Date:
 
 d = Date(3, 5, 2018)
 
-#d.month = 5
-#d.day = 3
-#d.year = 1208
-
 c = Date(30, 6, 2018)
-#c.month = 6
-#c.day = 30
-#c.year = 2018
 
 print(d.month, d.day, d.year)
 print(d)
