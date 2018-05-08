@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+#include <conio.h>
+#include <stdlib.h>
+
 
 
 int mylen(char *);
@@ -11,24 +14,89 @@ int identi(char *);
 int numb(char *);
 int retNumb(char *, int *);
 void spaces(char *);
+void callfunc();
+void intro();
+void choose(int, char *);
 
 void main(){
+    //intro();
     char s[100], s2[100], s3[100];
     int n = 0;
     gets(s);
-    //gets(s2);
+    gets(s2);
     gets(s3);
-    /*printf("\nMyLen %d", mylen(s));
+    printf("\nMyLen %d", mylen(s));
     printf("\nMyCmp %d", mycmp(s,s2));
     printf("\nPalind %d", palind(s));
-    */printf("\nIdenti %d", identi(s));/*
+    printf("\nIdenti %d", identi(s));
     printf("\nNumb %d", numb(s));
     printf("\nMyCat %s", mycat(s,s2,0));
     printf("\nMyCpy %s", mycpy(s,s2));
-  */if(retNumb(s3,&n)) printf("\nRetNumb %d",n) ;
-    else printf("NO");
-    printf("\n %d",'*');
-    //spaces(s3);
+    if(retNumb(s3,&n)) printf("\nRetNumb %d",n) ;
+    else printf("\nRetNumb NO\n");
+    spaces(s3);
+}
+
+void intro(){
+    system("cls");
+    printf("\t\t\tHello");
+    printf("\n\tWellcome to STR menu");
+    printf("\nHere are the programs you can use:");
+    printf("\n  1.String Lenght;\n  2.Compare Two Strings;\n  3.Is a String Symetric;\n  4.Is a String Identificator;\n  5.;\n  6.;\n  7.;\n  8.;\n  9.;\n  10.;");
+    printf("\nThat's All For Now\nYou may choose now.");
+    //char s() = {};
+}
+
+void choose(int max, char *programs){
+    char c;
+    do{
+            int op = 0, i = 0;
+        c=getch();
+            if(c == 0 || c == 224){
+                c = getch();
+                if (c == 80){
+                    if (op < max) op++;
+                    else op = 1;
+                }else if (c == 72){
+                    if (op > 1) op--;
+                    else op = max;
+                }
+            }
+            for (int i = 1; i <= max;i++) {
+                if (op == i) printf("\n > %d.%s",i,programs[i]);
+                else printf("\n   %d.%s",i,programs[i]);
+            }/*
+            if (op == 1) printf("\n > 1.Ascii");
+            else printf("\n   1.Ascii");
+            if (op == 2) printf("\n > 2.Change A to b and visa versa");
+            else printf("\n   2.Change A to b and visa versa");
+            if (op == 3) printf("\n > 3.Max of 3");
+            else printf("\n   3.Max of 3");
+            if (op == 4) printf("\n > 4.Max del for N - counted");
+            else printf("\n   4.Max del for N - counted");
+            if (op == 5) printf("\n > 5.Sum from 1 to N");
+            else printf("\n   5.Sum from 1 to N");
+            if (op == 6) printf("\n > 6.Exit");
+            else printf("\n   6.Exit");*/
+    }while(c!=13);
+}
+
+void callfunc(){
+    char s[100], s2[100], s3[100];
+    int n = 0;
+    gets(s);
+    gets(s2);
+    gets(s3);
+    printf("\nMyLen %d", mylen(s));
+    printf("\nMyCmp %d", mycmp(s,s2));
+    printf("\nPalind %d", palind(s));
+    printf("\nIdenti %d", identi(s));
+    printf("\nNumb %d", numb(s));
+    printf("\nMyCat %s", mycat(s,s2,0));
+    printf("\nMyCpy %s", mycpy(s,s2));
+    if(retNumb(s3,&n)) printf("\nRetNumb %d",n) ;
+    else printf("\nRetNumb NO");
+    spaces(s3);
 }
 
 int mylen(char *s){ //strlen
@@ -100,7 +168,7 @@ int retNumb(char *s, int *n){ //atoi
                 *n = ((*n) + (s[i] - '0')) * 10;
             }
         }else{
-            for (int i = 1; i < mylen(s); i++){
+            for (int i = 0; i < mylen(s); i++){
                 *n = ((*n) + (s[i] - '0')) * 10;
             }
         }
@@ -110,7 +178,15 @@ int retNumb(char *s, int *n){ //atoi
 }
 
 void spaces(char *s1){
-    char s2[] = {s1};
+    char s2 = s1;
+    int indx = 0;
+    if(s1[0] == ' '){
+        for (int i = 0; i < mylen(s1); i++){
+            if(s1[i] == ' ') indx++;
+
+        }
+        mycat(s1,s2,indx);
+    }
     if (s1[0] == ' ') mycat(s1,s2,1);
     for (int i = 0; i < mylen(s1); i++){
         continue;

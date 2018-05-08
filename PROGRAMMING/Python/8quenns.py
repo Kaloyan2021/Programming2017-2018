@@ -23,8 +23,30 @@ def chessBoard(x):
         t.pendown()
         z += 50
 
-chessBoard(int(input("Input table")))
+def find(chessCol):
+    #chessBoard(chessCol)
+    arr = [chessCol][chessCol]
+    arrCol = [chessCol]
+    arrRow = [chessCol]
+    for i in range(chessCol):#input all columns and rows to be free
+        for j in range(chessCol):
+            arr[i][j] = 0
+    arr[0][0] = 1
+    for i in range(chessCol):#if row is taken
+        for j in range(chessCol):
+            if arr[i][j] == 1:
+                arrRow[i] = 0
+            else:
+                arrRow[i] = 1
+    for i in range(chessCol):#if column is taken
+        for j in range(chessCol):
+            if arr[j][i] == 1:
+                arrRow[i] = 0
+            else:
+                arrRow[i] = 1
 
+chessCol = int(input("Input table"))
+find(chessCol)
 input()
 #class Board():
 #def posibility(self):
