@@ -36,3 +36,9 @@ d.dump()
 c.dump()
 c.next_day()
 c.dump()
+
+class Person:
+    pass
+
+class Student(Person):
+    pass

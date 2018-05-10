@@ -6,6 +6,7 @@
 import turtle
 t = turtle.Pen()
 def chessBoard(x):
+    t.pendown()
     a = (x*50)//2
     t.penup()
     t.goto(-a,-a)
@@ -22,7 +23,29 @@ def chessBoard(x):
         t.goto(-a,z)
         t.pendown()
         z += 50
+    t.penup()
+    placeDots(x,-1,1)
+    placeDots(x,1,-1)
+    placeDots(x,3,-3)
+    placeDots(x,-3,3)
 
+def placeDots(chessbord,x,y):
+    t.speed(1)
+    t.penup()
+    t.goto(0,0)
+    if chessbord % 2 == 0:
+        x *= 25
+        y *= 25
+    else:
+        if x == 0 and y == 0:
+            pass
+        else:
+            x *= 25
+            x *= 25
+    t.goto(x,y)
+    t.dot()
+    t.goto(0,0)
+        
 def find(chessCol):
     #chessBoard(chessCol)
     arr = [chessCol][chessCol]
@@ -46,7 +69,8 @@ def find(chessCol):
                 arrRow[i] = 1
 
 chessCol = int(input("Input table"))
-find(chessCol)
+#find(chessCol)
+chessBoard(chessCol)
 input()
 #class Board():
 #def posibility(self):
