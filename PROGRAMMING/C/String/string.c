@@ -34,7 +34,7 @@ void main(){
     printf("\nMyCpy %s", mycpy(s,s2));
     if(retNumb(s3,&n)) printf("\nRetNumb %d",n) ;
     else printf("\nRetNumb NO\n");
-    spaces(s3);
+    //spaces(s3);
 }
 
 void intro(){
@@ -148,16 +148,19 @@ int identi(char *s){ //ifIdentificator
 }
 
 int numb(char *s){ //ifNumber
-    int n = strlen(s);
+    int n = strlen(s),a=0;
     if(s[0] == '+' || s[0] == '-'){
+        a = 1;
         for(int i = 1; i <= n; i++){
-            if(( '0' <= s[i] && s[i] <= '9' )) return 1;
+            if(( '0' <= s[i] && s[i] <= '9' )) a++;
         }
     }else if('0' <= s[0] && s[0] <= '9'){
-        for(int i = 1; i <= n; i++){
-            if(( '0' <= s[i] && s[i] <= '9' )) return 1;
+        for(int i = 0; i <= n; i++){
+            if(( '0' <= s[i] && s[i] <= '9' )) a++;
         }
     }else return 0;
+    if(a == strlen(s)) return 1;
+    else return 0;
 }
 
 int retNumb(char *s, int *n){ //atoi
@@ -173,6 +176,7 @@ int retNumb(char *s, int *n){ //atoi
             }
         }
         if(s[0] == '-') *n = -(*n);
+        *n = *n/10;
         return 1;
     }else return 0;
 }
