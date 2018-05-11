@@ -96,7 +96,7 @@ void callfunc(){
     printf("\nMyCpy %s", mycpy(s,s2));
     if(retNumb(s3,&n)) printf("\nRetNumb %d",n) ;
     else printf("\nRetNumb NO");
-    spaces(s3);
+    //spaces(s3);
 }
 
 int mylen(char *s){ //strlen

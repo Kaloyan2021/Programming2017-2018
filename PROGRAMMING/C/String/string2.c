@@ -5,7 +5,8 @@
 int main(){
     char names[1000][21], s[100], s2[100];
     int n = 0, ok, a=0;
-    //printf("\nInput student number -> ");
+    //
+    //how many ' ' and how many s1 in s
     gets(s);
     gets(s2);
     for (int i = 0; s[i] != 0; i++){
@@ -22,5 +23,32 @@ int main(){
         }
     }
     printf("\n How many times s2 in s -> %d", a);
+    //finish
+    //namesOfAClass
+    //
+    //
+    //
+    printf("\nInput student number -> ");
+    scanf("%d",&n);
+    scanf("%d");
+    for (int i = 0; i < n; i++) gets(names[i]);
+    for (int i = 0; i < n; i++) printf("\nPerson %d is with name %s", i + 1, names[i]);
+    char h[21];
+    for (int i = 1; i < n; i++){
+       // memset(h,0,21);
+        for (int j = 0; j<n-i; j++){
+         //   memset(h,0,21);
+            if(strcmp(names[j], names[j+1])>0){
+                //for (int k = 0; names[i][k] != 0 && names[i + 1][k] != 0; k++){
+                    strcpy(h,names[j]);
+                    strcpy(names[j], names[j + 1]);
+                    strcpy(names[j + 1], h);
+                //}
+            }
+        }
+    }
+    printf("\n");
+    for (int i = 0; i < n; i++) printf("\nPerson %d is with name %s", i + 1, names[i]);
+
     return 0;
 }
