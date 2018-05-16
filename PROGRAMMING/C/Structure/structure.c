@@ -53,7 +53,7 @@ void main(){
             else printf("\n   Use the Method of Name Sorting");
             if (op == 2) printf("\n > Use the Method of Number Sorting");
             else printf("\n   Use the Method of Number Sorting");
-    }
+    }while(c!=13);
 
 
 
