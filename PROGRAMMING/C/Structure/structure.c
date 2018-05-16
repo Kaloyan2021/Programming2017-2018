@@ -36,7 +36,7 @@ void main(){
     }
     srtN(s, n, m);
     for (int z = 0; z < n; z++){
-        printf("zn %3d %-41s ",s[z].num,s[z].name);
+        printf("\n %3d %-41s ",s[z].num,s[z].name);
         for (i = 0; i < n; i++) printf("%3d",s[z].marks[i]);
         printf("%6.2f", s[z].avr);
     }
