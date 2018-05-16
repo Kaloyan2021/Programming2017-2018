@@ -4,7 +4,6 @@
 #define maxbru 30
 #define maxbrp 20
 
-
 typedef struct{
     int num, marks[maxbrp];
     char name[maxbru];
@@ -21,24 +20,24 @@ void main(){
     printf("vuvedi predmeti ( <= 20) ");
     scanf("\n%d",&m);
     for (i = 0; i < n; i++){
-        s[i].avr = 0;
-        printf("\nUchenika e s nomer ");
-        scanf("%d",&s[i].num);
+        s[ i ].avr = 0;
+        printf("\nUchenika e s nomer - ");
+        scanf("%d",&s[ i ].num);
         getchar();
-        printf("\nUchenik %d, name ", i);
-        gets(s[i].name);
+        printf("\nUchenik %d, name - ", s[ i ].num);
+        gets(s[ i ].name);
         for (int j = 0; j < m; j++){
-            printf("\nVuvedi na uchenik %d ocenka %d ", i, j);
-            scanf("%d",&s[i].marks[j]);
-            s[i].avr = s[i].avr + s[i].marks[j];
+            printf("\nVuvedi na uchenik %d ocenka %d ",s[ i ].num, j+1);
+            scanf("%d",&s[ i ].marks[ j ]);
+            s[ i ].avr = s[ i ].avr + s[ i ].marks[ j ];
         }
-        s[i].avr = s[i].avr / m;
+        s[ i ].avr = s[ i ].avr / m;
     }
     srtN(s, n, m);
     for (int z = 0; z < n; z++){
-        printf("zn %3d %-41s ",s[z].num,s[z].name);
-        for (i = 0; i < n; i++) printf("%3d",s[z].marks[i]);
-        printf("%6.2f", s[z].avr);
+        printf("\n %3d %-41s ", s[ z ].num, s[ z ].name);
+        for (i = 0; i < n; i++) printf("%3d",s[ z ].marks[ i ]);
+        printf("%6.2f", s[ z ].avr);
     }
 
 }
