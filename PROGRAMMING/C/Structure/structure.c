@@ -81,7 +81,7 @@ void srtN(tst *s1, int n, int m){
     }
 }
 
-void srtD(tst *s1, in n, int m){
+void srtD(tst *s1, int n, int m){
     tst s2;
     for (int i = 0; i < n; i++)
     {
