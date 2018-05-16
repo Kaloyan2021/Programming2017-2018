@@ -34,7 +34,8 @@ void main(){
         s[ i ].avr = s[ i ].avr / m;
     }
     char c;
-    int op = 0, i = 0;
+    int op = 0
+    i = 0;
     do{
         c = getch();
             if(c==0 || c == 224){
