@@ -38,6 +38,7 @@ void main(){
     int op = 0;
     i = 0;
     do{
+        system("cls");
         c = getch();
             if(c==0 || c == 224){
                 c = getch();
