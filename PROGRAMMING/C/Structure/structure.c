@@ -11,7 +11,7 @@ typedef struct{
     }tst;
 
 void srtN(tst *, int, int);
-
+void srtD(tst *, int, int);
 void main(){
     tst s[maxbru];
     int n, m, i;
