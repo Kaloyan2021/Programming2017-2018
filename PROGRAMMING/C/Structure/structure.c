@@ -34,14 +34,14 @@ void main(){
         s[ i ].avr = s[ i ].avr / m;
     }
     char c;
+    int op = 0, i = 0;
     do{
-        int op = 0, i = 0;
         c = getch();
             if(c==0 || c == 224){
                 c = getch();
                 if(c == 80){
                     if(op < 2) op++;
-                    else op = 1;    
+                    else op = 1;
                 }else if(c == 72){
                     if(op > 1) op --;
                     else op = 2;
@@ -67,7 +67,7 @@ void srtN(tst *s1, int n, int m){
     tst s2;
     for (int i = 0; i < n; i++)
     {
-        for (int j = i; j < n; j++) 
+        for (int j = i; j < n; j++)
         {
             if(strcmp(s1[i].name, s1[i + 1].name) > 0){
                 s2 = s1[i];
