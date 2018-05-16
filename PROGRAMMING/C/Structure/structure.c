@@ -35,17 +35,10 @@ void main(){
     }
     srtN(s, n, m);
     for (int z = 0; z < n; z++){
-<<<<<<< HEAD
         printf("\n %3d %-41s ", s[ z ].num, s[ z ].name);
         for (i = 0; i < n; i++) printf("%3d",s[ z ].marks[ i ]);
         printf("%6.2f", s[ z ].avr);
-=======
-        printf("\n %3d %-41s ",s[z].num,s[z].name);
-        for (i = 0; i < n; i++) printf("%3d",s[z].marks[i]);
-        printf("%6.2f", s[z].avr);
->>>>>>> 0a6b9de2e1176dfdbd51ce4ad4442c9ec94c7400
     }
-
 }
 
 void srtN(tst *s1, int n, int m){
