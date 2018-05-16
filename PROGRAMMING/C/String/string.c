@@ -50,7 +50,7 @@ void intro(){
 void choose(int max, char *programs){
     char c;
     do{
-            int op = 0, i = 0;
+        int op = 0, i = 0;
         c=getch();
             if(c == 0 || c == 224){
                 c = getch();
