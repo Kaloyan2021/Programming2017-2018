@@ -34,8 +34,6 @@ void main(){
         s[ i ].avr = s[ i ].avr / m;
     }
     char c;
-    printf("\n > Use the Method of Name Sorting");
-    printf("\n   Use the Method of Number Sorting");
     do{
         int op = 0, i = 0;
         c = getch();
@@ -54,11 +52,10 @@ void main(){
             if (op == 2) printf("\n > Use the Method of Number Sorting");
             else printf("\n   Use the Method of Number Sorting");
     }while(c!=13);
-
-
-
-
-    srtN(s, n, m);
+    switch(op){
+       case 1: srtN(s, n, m); break;
+       case 2: srtD(s, n, m); break;
+    }
     for (int z = 0; z < n; z++){
         printf("\n %3d %-41s ", s[ z ].num, s[ z ].name);
         for (i = 0; i < n; i++) printf("%3d",s[ z ].marks[ i ]);
