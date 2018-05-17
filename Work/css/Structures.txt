@@ -1,0 +1,36 @@
+﻿структурата може да съдържа различен тип данни
+
+зад. Тип ученик :
+	номер - цяло число
+	име - симв. низ
+	год. оценки - масив от числа
+	ср. успех - реално число
+
+typedef struct {
+	int num;
+	char name[41];
+	int marks[maxbrp];
+	float avr;
+	} tstudent;
+
+tstudent s;
+	
+m - брой на предмети < 20 !!!!
+
+
+
+	scanf("%d",&s.num);
+	getchar;
+	gets(s.name);
+	s.avr = 0;
+	for (i = 0;i<m;i++){
+	scanf("%d",s.marks[i]);
+	s.avr = s.avr + s.marks[i];
+	}
+s.avr = savr/m;
+
+printf("\n%3d %-41s", s.num, s.name);
+for(i=0;i<m;i++) printf ("%3d",s.marks[i]);
+printf("%6.2f",s.avr);
+
+зад. н ученици м предмети 
