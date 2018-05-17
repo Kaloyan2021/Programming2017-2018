@@ -6,7 +6,7 @@ class Hilbert(object):
         self.pen = turtle.Pen()
         self.pen.speed("fastest")
         self.pen.penup()
-        self.pen.goto(300,300)
+        self.pen.goto(250,250)
         self.pen.pendown()
     def a(self, i):
         if i <= 0:
@@ -86,7 +86,7 @@ class Hilbert(object):
 
 if __name__ == "__main__":
     h = Hilbert(2)
-    h.d(10)
+    h.a(int(input()))
 
-    input("press any key")
+    input("press any Enter")
 
