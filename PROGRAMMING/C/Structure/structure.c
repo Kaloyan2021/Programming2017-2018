@@ -62,7 +62,7 @@ void main(){
     }
     for (int z = 0; z < n; z++){
         printf("\n %3d %-41s ", s[ z ].num, s[ z ].name);
-        for (i = 0; i < n; i++) printf("%3d",s[ z ].marks[ i ]);
+        for (i = 0; i < m; i++) printf("%3d",s[ z ].marks[ i ]);
         printf("%6.2f", s[ z ].avr);
     }
 }
@@ -71,12 +71,12 @@ void srtN(tst *s1, int n, int m){
     tst s2;
     for (int i = 0; i < n; i++)
     {
-        for (int j = i; j < n; j++)
+        for (int j = i + 1; j < n; j++)
         {
-            if(strcmp(s1[i].name, s1[i + 1].name) > 0){
+            if(strcmp(s1[i].name, s1[j].name) > 0){
                 s2 = s1[i];
-                s1[i] = s1[i+1];
-                s1[i+1] = s2;
+                s1[i] = s1[j];
+                s1[j] = s2;
             }
         }
     }
@@ -86,13 +86,13 @@ void srtD(tst *s1, int n, int m){
     tst s2;
     for (int i = 0; i < n; i++)
     {
-        for (int j = i; j < n; j++)
+        for (int j = i + 1; j < n; j++)
         {
-            if (s1[i].num > s1[i + 1].num)
+            if (s1[i].num > s1[j].num)
             {
                 s2 = s1[i];
-                s1[i] = s1[i + 1];
-                s1[i + 1] = s2;
+                s1[i] = s1[j];
+                s1[j] = s2;
             }
         }
     }
