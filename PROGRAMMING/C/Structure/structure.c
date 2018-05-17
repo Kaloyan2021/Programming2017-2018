@@ -50,6 +50,7 @@ void main(){
                     else op = 2;
                 }
             }
+            system("cls");
             if (op == 1) printf("\n > Use the Method of Name Sorting");
             else printf("\n   Use the Method of Name Sorting");
             if (op == 2) printf("\n > Use the Method of Number Sorting");
