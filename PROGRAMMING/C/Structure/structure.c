@@ -60,9 +60,19 @@ void main(){
        case 1: srtN(s, n, m); break;
        case 2: srtD(s, n, m); break;
     }
+    int ok = 1;
     for (int z = 0; z < n; z++){
         printf("\n %3d %-41s ", s[ z ].num, s[ z ].name);
-        for (i = 0; i < m; i++) printf("%3d",s[ z ].marks[ i ]);
+        for (i = 0; i < m; i++){
+            do{
+                if (ok == 0) printf("\nInsert a diferent number, this is already taken")
+                printf("%3d",s[ z ].marks[ i ]);
+                for (int l = 0; l < m; l++){
+                    if (s[ z ].marks[ i ] == s[ z ].marks[ l ]) ok = 0
+                }
+            }while(ok == 0)
+
+        }
         printf("%6.2f", s[ z ].avr);
     }
 }
