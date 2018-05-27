@@ -37,8 +37,9 @@ void main(){
     char c;
     int op = 0;
     i = 0;
+    system("cls");
     do{
-        system("cls");
+        printf("Use Up/Down Arrow to Begin");
         c = getch();
             if(c==0 || c == 224){
                 c = getch();
@@ -88,11 +89,11 @@ void srtD(tst *s1, int n, int m){
     {
         for (int j = i; j < n; j++)
         {
-            if (s1[i].num > s1[i + 1].num)
+            if (s1[i].num > s1[j].num)
             {
                 s2 = s1[i];
-                s1[i] = s1[i + 1];
-                s1[i + 1] = s2;
+                s1[i] = s1[j];
+                s1[j] = s2;
             }
         }
     }
