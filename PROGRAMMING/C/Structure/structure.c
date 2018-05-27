@@ -13,9 +13,14 @@ typedef struct{
 
 void srtN(tst *, int, int);
 void srtD(tst *, int, int);
+int arrowchoose();
+int yes_nochoose(tst *, int, int);
 void main(){
     tst s[maxbru];
-    int n, m, i;
+    int n, m, i, op = 0;
+    char c;
+    for (int aski = 0; aski <= 224; aski++) printf("\n %d -> %c", aski, aski);
+
     printf("Vuvedi uchenici ( <= 30) ");
     scanf("\n%d",&n);
     printf("vuvedi predmeti ( <= 20) ");
@@ -34,45 +39,33 @@ void main(){
         }
         s[ i ].avr = s[ i ].avr / m;
     }
-    char c;
-    int op = 0;
     i = 0;
 
     system("cls");
-    do{
-        printf("Use Up/Down Arrow to Begin");
-    /*do{
-        system("cls");
-        c = getch();
-            if(c==0 || c == 224){
-                c = getch();
-                if(c == 80){
-                    if(op < 2) op++;
-                    else op = 1;
-                }else if(c == 72){
-                    if(op > 1) op --;
-                    else op = 2;
-                }
-            }//
-            //system("cls");
-            if (op == 1) printf("\n > Use the Method of Name Sorting");
-            else printf("\n   Use the Method of Name Sorting");
-            if (op == 2) printf("\n > Use the Method of Number Sorting");
-            else printf("\n   Use the Method of Number Sorting");
-    }while(c!=13);
-    switch(op){
-       case 2: srtD(s, n, m); break;
-    }*/
-    //case 1:
-    srtN(s, n, m); //break;
+    printf("\nUse Up/Down Arrow to Begin");
     int ok = 1;
-    for (int z = 0; z < n; z++){
-        printf("\n %3d %-41s ", s[ z ].num, s[ z ].name);
-        for (i = 0; i < m; i++){
-            printf("%3d",s[ z ].marks[ i ]);
+    do
+    {
+        switch(arrowchoose())
+        {
+            case 1:
+                srtN(s, n, m); break;
+            case 2:
+                srtD(s, n, m); break;
         }
-        printf("%6.2f", s[ z ].avr);
-    }
+
+
+        for (int z = 0; z < n; z++){
+            printf("\n %3d %-41s ", s[ z ].num, s[ z ].name);
+            for (i = 0; i < m; i++){
+                printf("%3d",s[ z ].marks[ i ]);
+            }
+            printf("%6.2f", s[ z ].avr);
+        }
+
+        printf("\n\t\t\tDo you want another method? ");
+        ok = yes_nochoose(s, n, m);
+    }while(ok == 1);
 }
 
 void srtN(tst *s1, int n, int m){
@@ -106,9 +99,86 @@ void srtD(tst *s1, int n, int m){
     }
 }
 
+int arrowchoose(){
+    int c;
+    int op = 2;
+    do{
+        c = getch();
+        if(c == 0 || c == 224)
+        {
+            c = getch();
+            if(c == 72)
+            {
+                if(op < 2) op = 2;
+                else op = 1;
+            }else if(c == 80)
+            {
+                if(op > 1) op = 1;
+                else op = 2;
+            }
+        }
 
+        system("cls");
+        printf("\n\t\t\tUse arrows to choose a method");
+        if (op == 1)
+        {
+            printf("\n > Use the Method of Name Sorting");
+            printf("\n   Use the Method of Number Sorting");
+        }
+        else
+        {
+            printf("\n   Use the Method of Name Sorting");
+            printf("\n > Use the Method of Number Sorting");
+        }
 
+    }while(c!=13);
+    return op;
+}
 
+int yes_nochoose(tst *s, int n, int m){
+    int c;
+    int op = 2;
+    do{
+        system("cls");
+        printf("\nUse Up/Down Arrow to Begin");
+        for (int z = 0; z < n; z++){
+            printf("\n %3d %-41s ", s[ z ].num, s[ z ].name);
+            for (int i = 0; i < m; i++){
+                printf("%3d",s[ z ].marks[ i ]);
+            }
+            printf("%6.2f", s[ z ].avr);
+        }
+        printf("\n\t\t\tUse arrows to choose Yes or No");
+        c = getch();
+        if(c == 0 || c == 224)
+        {
+            c = getch();
+            if(c == 72)
+            {
+                if(op < 2) op = 2;
+                else op = 1;
+            }else if(c == 80)
+            {
+                if(op > 1) op = 1;
+                else op = 2;
+            }
+        }
+
+        
+        if (op == 1)
+        {
+            printf("\n > Yes");
+            printf("\n   No");
+        }
+        else
+        {
+            printf("\n   Yes");
+            printf("\n > No");
+        }
+
+    }while(c!=13);
+    if (op == 2) return 0;
+}
 
 
 
