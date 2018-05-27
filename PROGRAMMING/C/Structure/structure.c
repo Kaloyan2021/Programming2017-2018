@@ -19,8 +19,6 @@ void main(){
     tst s[maxbru];
     int n, m, i, op = 0;
     char c;
-    for (int aski = 0; aski <= 224; aski++) printf("\n %d -> %c", aski, aski);
-
     printf("Vuvedi uchenici ( <= 30) ");
     scanf("\n%d",&n);
     printf("vuvedi predmeti ( <= 20) ");
@@ -140,7 +138,7 @@ int yes_nochoose(tst *s, int n, int m){
     int op = 2;
     do{
         system("cls");
-        printf("\nUse Up/Down Arrow to Begin");
+        printf("\n\t\t\tUse Up/Down Arrow to Begin");
         for (int z = 0; z < n; z++){
             printf("\n %3d %-41s ", s[ z ].num, s[ z ].name);
             for (int i = 0; i < m; i++){
@@ -149,6 +147,17 @@ int yes_nochoose(tst *s, int n, int m){
             printf("%6.2f", s[ z ].avr);
         }
         printf("\n\t\t\tUse arrows to choose Yes or No");
+        
+        if (op == 1)
+        {
+            printf("\n > Yes");
+            printf("\n   No");
+        }
+        else
+        {
+            printf("\n   Yes");
+            printf("\n > No");
+        }
         c = getch();
         if(c == 0 || c == 224)
         {
@@ -162,18 +171,6 @@ int yes_nochoose(tst *s, int n, int m){
                 if(op > 1) op = 1;
                 else op = 2;
             }
-        }
-
-        
-        if (op == 1)
-        {
-            printf("\n > Yes");
-            printf("\n   No");
-        }
-        else
-        {
-            printf("\n   Yes");
-            printf("\n > No");
         }
 
     }while(c!=13);
