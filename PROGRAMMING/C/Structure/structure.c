@@ -37,14 +37,12 @@ void main(){
     char c;
     int op = 0;
     i = 0;
-<<<<<<< HEAD
+
     system("cls");
     do{
         printf("Use Up/Down Arrow to Begin");
-=======
     /*do{
         system("cls");
->>>>>>> b586fb6470c4a0d7069c9cc98ad44569f6ff6cd8
         c = getch();
             if(c==0 || c == 224){
                 c = getch();
@@ -96,21 +94,13 @@ void srtD(tst *s1, int n, int m){
     tst s2;
     for (int i = 1; i < n; i++)
     {
-        for (int j = 0; j < n - n; j++)
+        for (int j = 0; j < n - i; j++)
         {
-<<<<<<< HEAD
-            if (s1[i].num > s1[j].num)
-            {
-                s2 = s1[i];
-                s1[i] = s1[j];
-                s1[j] = s2;
-=======
             if (s1[j].num > s1[j + 1].num)
             {
                 s2 = s1[j];
                 s1[j] = s1[j + 1];
                 s1[j + 1] = s2;
->>>>>>> b586fb6470c4a0d7069c9cc98ad44569f6ff6cd8
             }
         }
     }
