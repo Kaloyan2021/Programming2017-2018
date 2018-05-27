@@ -14,7 +14,7 @@ typedef struct{
 void srtN(tst *, int, int);
 void srtD(tst *, int, int);
 int arrowchoose();
-int yes_nochoose(tst *, int, int);
+void yes_nochoose(int *,tst *, int, int);
 void main(){
     tst s[maxbru];
     int n, m, i, op = 0;
@@ -52,18 +52,8 @@ void main(){
                 srtD(s, n, m); break;
         }
 
-
-        for (int z = 0; z < n; z++){
-            printf("\n %3d %-41s ", s[ z ].num, s[ z ].name);
-            for (i = 0; i < m; i++){
-                printf("%3d",s[ z ].marks[ i ]);
-            }
-            printf("%6.2f", s[ z ].avr);
-        }
-
-        printf("\n\t\t\tDo you want another method? ");
-        ok = yes_nochoose(s, n, m);
-    }while(ok == 1);
+        yes_nochoose(&ok, s, n, m);
+    }while(ok != 0 );
 }
 
 void srtN(tst *s1, int n, int m){
@@ -133,7 +123,7 @@ int arrowchoose(){
     return op;
 }
 
-int yes_nochoose(tst *s, int n, int m){
+void yes_nochoose(int *ok, tst *s, int n, int m){
     int c;
     int op = 2;
     do{
@@ -147,7 +137,7 @@ int yes_nochoose(tst *s, int n, int m){
             printf("%6.2f", s[ z ].avr);
         }
         printf("\n\t\t\tUse arrows to choose Yes or No");
-        
+
         if (op == 1)
         {
             printf("\n > Yes");
@@ -174,7 +164,7 @@ int yes_nochoose(tst *s, int n, int m){
         }
 
     }while(c!=13);
-    if (op == 2) return 0;
+    if (op == 2) ok = 0;
 }
 
 
