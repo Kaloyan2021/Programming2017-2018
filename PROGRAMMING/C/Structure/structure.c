@@ -37,9 +37,14 @@ void main(){
     char c;
     int op = 0;
     i = 0;
+<<<<<<< HEAD
     system("cls");
     do{
         printf("Use Up/Down Arrow to Begin");
+=======
+    /*do{
+        system("cls");
+>>>>>>> b586fb6470c4a0d7069c9cc98ad44569f6ff6cd8
         c = getch();
             if(c==0 || c == 224){
                 c = getch();
@@ -58,26 +63,30 @@ void main(){
             else printf("\n   Use the Method of Number Sorting");
     }while(c!=13);
     switch(op){
-       case 1: srtN(s, n, m); break;
        case 2: srtD(s, n, m); break;
-    }
+    }*/
+    //case 1:
+    srtN(s, n, m); //break;
+    int ok = 1;
     for (int z = 0; z < n; z++){
         printf("\n %3d %-41s ", s[ z ].num, s[ z ].name);
-        for (i = 0; i < n; i++) printf("%3d",s[ z ].marks[ i ]);
+        for (i = 0; i < m; i++){
+            printf("%3d",s[ z ].marks[ i ]);
+        }
         printf("%6.2f", s[ z ].avr);
     }
 }
 
 void srtN(tst *s1, int n, int m){
     tst s2;
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
-        for (int j = i; j < n; j++)
+        for (int j = 0; j < n-i; j++)
         {
-            if(strcmp(s1[i].name, s1[i + 1].name) > 0){
-                s2 = s1[i];
-                s1[i] = s1[i+1];
-                s1[i+1] = s2;
+            if(strcmp(s1[j].name, s1[j+1].name) > 0){
+                s2 = s1[j];
+                s1[j] = s1[j+1];
+                s1[j+1] = s2;
             }
         }
     }
@@ -85,15 +94,23 @@ void srtN(tst *s1, int n, int m){
 
 void srtD(tst *s1, int n, int m){
     tst s2;
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
-        for (int j = i; j < n; j++)
+        for (int j = 0; j < n - n; j++)
         {
+<<<<<<< HEAD
             if (s1[i].num > s1[j].num)
             {
                 s2 = s1[i];
                 s1[i] = s1[j];
                 s1[j] = s2;
+=======
+            if (s1[j].num > s1[j + 1].num)
+            {
+                s2 = s1[j];
+                s1[j] = s1[j + 1];
+                s1[j + 1] = s2;
+>>>>>>> b586fb6470c4a0d7069c9cc98ad44569f6ff6cd8
             }
         }
     }
