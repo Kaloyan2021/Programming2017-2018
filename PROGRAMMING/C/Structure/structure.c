@@ -17,7 +17,7 @@ int arrowchoose();
 void yes_nochoose(int *,tst *, int, int);
 void main(){
     tst s[maxbru];
-    int n, m, i, op = 0;
+    int ok = 1, n, m, i, op = 0;
     char c;
     printf("Vuvedi uchenici ( <= 30) ");
     scanf("\n%d",&n);
@@ -32,7 +32,10 @@ void main(){
         gets(s[ i ].name);
         for (int j = 0; j < m; j++){
             printf("\nVuvedi na uchenik %d ocenka %d ",s[ i ].num, j+1);
-            scanf("%d",&s[ i ].marks[ j ]);
+            do{
+                scanf("%d",&s[ i ].marks[ j ]);
+                if (s[i].marks[j] < 2 || s[i].marks[j] > 6) printf("\nTry again");
+            }while (s[i].marks[j] < 2 || s[i].marks[j] > 6);
             s[ i ].avr = s[ i ].avr + s[ i ].marks[ j ];
         }
         s[ i ].avr = s[ i ].avr / m;
@@ -41,7 +44,6 @@ void main(){
 
     system("cls");
     printf("\nUse Up/Down Arrow to Begin");
-    int ok = 1;
     do
     {
         switch(arrowchoose())
