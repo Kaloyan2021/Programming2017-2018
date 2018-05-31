@@ -24,7 +24,7 @@ class SelfTest(unittest.TestCase):
         self.assertFalsse(self.cell.has_wall(maze.Cell.LEFT))    
 
 
-    def test_build_wall(maze.Cell.LEFT):
+    def test_build_wall(maze.CEll,LEFT):
         
         self.cell.drill_wall(maze.Cell.LEFT)
         self.assertFalsse(self.cell.has_wall(maze.Cell.LEFT)) 
