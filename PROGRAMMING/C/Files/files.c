@@ -1,15 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 
 FILE *myFileWrite;
 FILE *myFileRead;
 FILE *myFileAdd;
 
+
+
 void myWrite(char *);
 void myRead(char *);
 void myAdd(char *);
-void myOpt(int *op);
+void myOpt(int op);
+
+
+
+
+
+
+
 
 
 void main(){
@@ -75,6 +85,13 @@ void main(){
     }while(1 /*choice != 5*/);
 }
 
+
+
+
+
+
+
+
 void myRead(char *filename)
 {
     char s[100];
@@ -92,6 +109,14 @@ void myRead(char *filename)
     }else perror("ERROR in oppening file");
     getch();
 }
+
+
+
+
+
+
+
+
 void myWrite(char *filename)
 {
     char s[100];
@@ -123,6 +148,14 @@ void myWrite(char *filename)
         fclose(myFileWrite);
     }else perror("ERROR in oppening file");
 }
+
+
+
+
+
+
+
+
 void myAdd(char *filename)
 {
     char s[100];
@@ -156,60 +189,67 @@ void myAdd(char *filename)
     }else perror("ERROR in oppening file");
 }
 
-void myOpt(int *op)
+
+
+
+
+
+
+
+void myOpt(int op)
 {
     if (op == 1)
-        {
-            printf("\n > 1.Write");
-            printf("\n   2.Read");
-            printf("\n   3.Add");
-            printf("\n   4.Change File Path");
-            printf("\n   5.EXIT");
-            printf("\n   6.Shutdown the computer");
-        }
-        else if (op == 2)
-        {
-            printf("\n   1.Write");
-            printf("\n > 2.Read");
-            printf("\n   3.Add");
-            printf("\n   4.Change File Path");
-            printf("\n   5.EXIT");
-            printf("\n   6.Shutdown the computer");
-        }
-        else if (op == 3)
-        {
-            printf("\n   1.Write");
-            printf("\n   2.Read");
-            printf("\n > 3.Add");
-            printf("\n   4.Change File Path");
-            printf("\n   5.EXIT");
-            printf("\n   6.Shutdown the computer");
-        }
-        else if (op == 4)
-        {
-            printf("\n   1.Write");
-            printf("\n   2.Read");
-            printf("\n   3.Add");
-            printf("\n > 4.Change File Path");
-            printf("\n   5.EXIT");
-            printf("\n   6.Shutdown the computer");
-        }
-        else if (op == 5)
-        {
-            printf("\n   1.Write");
-            printf("\n   2.Read");
-            printf("\n   3.Add");
-            printf("\n   4.Change File Path");
-            printf("\n > 5.EXIT");
-            printf("\n   6.Shutdown the computer");
-        }
-        else
-        {
-            printf("\n   1.Write");
-            printf("\n   2.Read");
-            printf("\n   3.Add");
-            printf("\n   4.Change File Path");
-            printf("\n   5.EXIT");
-            printf("\n > 6.Shutdown the computer");
-        }
+    {
+        printf("\n > 1.Write");
+        printf("\n   2.Read");
+        printf("\n   3.Add");
+        printf("\n   4.Change File Path");
+        printf("\n   5.EXIT");
+        printf("\n   6.Shutdown the computer");
+    }
+    else if (op == 2)
+    {
+        printf("\n   1.Write");
+        printf("\n > 2.Read");
+        printf("\n   3.Add");
+        printf("\n   4.Change File Path");
+        printf("\n   5.EXIT");
+        printf("\n   6.Shutdown the computer");
+    }
+    else if (op == 3)
+    {
+        printf("\n   1.Write");
+        printf("\n   2.Read");
+        printf("\n > 3.Add");
+        printf("\n   4.Change File Path");
+        printf("\n   5.EXIT");
+        printf("\n   6.Shutdown the computer");
+    }
+    else if (op == 4)
+    {
+        printf("\n   1.Write");
+        printf("\n   2.Read");
+        printf("\n   3.Add");
+        printf("\n > 4.Change File Path");
+        printf("\n   5.EXIT");
+        printf("\n   6.Shutdown the computer");
+    }
+    else if (op == 5)
+    {
+        printf("\n   1.Write");
+        printf("\n   2.Read");
+        printf("\n   3.Add");
+        printf("\n   4.Change File Path");
+        printf("\n > 5.EXIT");
+        printf("\n   6.Shutdown the computer");
+    }
+    else
+    {
+        printf("\n   1.Write");
+        printf("\n   2.Read");
+        printf("\n   3.Add");
+        printf("\n   4.Change File Path");
+        printf("\n   5.EXIT");
+        printf("\n > 6.Shutdown the computer");
+    }
 }
