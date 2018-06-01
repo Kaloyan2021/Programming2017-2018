@@ -13,7 +13,6 @@ void myAdd(char *);
 
 
 void main(){
-
     int c;
     char s[100],filename[100];
     int op = 1, choice = 1;
@@ -30,6 +29,7 @@ void main(){
             printf("\n   3.Add");
             printf("\n   4.Change File Path");
             printf("\n   5.EXIT");
+            printf("\n   6.Shutdown the computer");
         }
         else if (op == 2)
         {
@@ -38,6 +38,7 @@ void main(){
             printf("\n   3.Add");
             printf("\n   4.Change File Path");
             printf("\n   5.EXIT");
+            printf("\n   6.Shutdown the computer");
         }
         else if (op == 3)
         {
@@ -46,6 +47,7 @@ void main(){
             printf("\n > 3.Add");
             printf("\n   4.Change File Path");
             printf("\n   5.EXIT");
+            printf("\n   6.Shutdown the computer");
         }
         else if (op == 4)
         {
@@ -54,6 +56,16 @@ void main(){
             printf("\n   3.Add");
             printf("\n > 4.Change File Path");
             printf("\n   5.EXIT");
+            printf("\n   6.Shutdown the computer");
+        }
+        else if (op == 5)
+        {
+            printf("\n   1.Write");
+            printf("\n   2.Read");
+            printf("\n   3.Add");
+            printf("\n   4.Change File Path");
+            printf("\n > 5.EXIT");
+            printf("\n   6.Shutdown the computer");
         }
         else
         {
@@ -61,7 +73,8 @@ void main(){
             printf("\n   2.Read");
             printf("\n   3.Add");
             printf("\n   4.Change File Path");
-            printf("\n > 5.EXIT");
+            printf("\n   5.EXIT");
+            printf("\n > 6.Shutdown the computer");
         }
 
         c = getch();
@@ -70,13 +83,13 @@ void main(){
             c = getch();
             if(c == 80)
             {
-                if(op < 5) op++;
+                if(op < 6) op++;
                 else op = 1;
             }
             else if(c == 72)
             {
                 if(op > 1) op--;
-                else op = 5;
+                else op = 6;
             }
         }else if(c == 13){
             choice = op;
@@ -84,50 +97,13 @@ void main(){
             {
 
                 case 1:
-                    myFileWrite = fopen(filename,"w");
-                    if(myFileWrite)
-                    {
-                        system("cls");
-                        printf("Write what you wish to write, to end write 'end', 'END' or something in between or simply");
-                        printf("\n");
-                        do
-                        {
-                            gets(s);
-                            if(strstr(s,"END"))break;
-                            if(strstr(s,"end"))break;
-
-                            if(strstr(s,"End"))break;
-                            if(strstr(s,"ENd"))break;
-                            if(strstr(s,"EnD"))break;
-
-                            if(strstr(s,"eNd"))break;
-                            if(strstr(s,"ENd"))break;
-                            if(strstr(s,"eND"))break;
-
-                            if(strstr(s,"enD"))break;
-                            if(strstr(s,"nND"))break;
-                            if(strstr(s,"EnD"))break;
-
-                            fprintf(myFileWrite,"%s\n",s);
-                        }while(1);
-                        fclose(myFileWrite);
-                    }
+                    system("cls");
+                    myWrite(filename);
                     break;
 
                 case 2:
-                    myFileRead = fopen(filename,"r");
-                    if(myFileRead)
-                    {
-                        system("cls");
-                        printf("\nYou wished to read from file %s", filename);
-                        while(!feof(myFileRead))
-                        {
-                            if(fgets(s,99,myFileRead))
-                                printf("\n%s",s);
-                        }
-                        fclose(myFileRead);
-                    }
-                    getch();
+                    system("cls");
+                    myRead(filename);
                     break;
 
                 case 3:
@@ -163,7 +139,7 @@ void main(){
                         }while(1);
                         //}
                         fclose(myFileAdd);
-                    }
+                    }else perror("ERROR in oppening file");
                     break;
 
                 case 4:
@@ -173,11 +149,67 @@ void main(){
                     break;
 
                 case 5:
-                    system("shutdown\ \/s");
                     exit(1);
-                    //break;
+                case 6:
+                    system("shutdown /s");
+                    exit(1);
             }
         }
 
-    }while(choice != 5);
+    }while(1 /*choice != 5*/);
+}
+
+void myRead(char *filename)
+{
+    char s[100];
+    myFileRead = fopen(filename,"r");
+    if(myFileRead)
+    {
+        printf("\nYou wished to read from file %s", filename);
+        if(!feof(myFileRead)) printf("Nothing in this file, Sorry, try something else");
+        while(!feof(myFileRead))
+        {
+            if(fgets(s,99,myFileRead))
+                printf("\n%s",s);
+        }
+
+        fclose(myFileRead);
+    }perror("ERROR in oppening file");
+    getch();
+}
+void myWrite(char *filename)
+{
+    char s[100];
+    myFileWrite = fopen(filename,"w");
+    if(myFileWrite)
+    {
+        printf("Write what you wish to write, to end write 'end', 'END' or something in between or simply");
+        printf("\n");
+        do
+        {
+            gets(s);
+            if(strstr(s,"END"))break;
+            if(strstr(s,"end"))break;
+
+            if(strstr(s,"End"))break;
+            if(strstr(s,"ENd"))break;
+            if(strstr(s,"EnD"))break;
+
+            if(strstr(s,"eNd"))break;
+            if(strstr(s,"ENd"))break;
+            if(strstr(s,"eND"))break;
+
+            if(strstr(s,"enD"))break;
+            if(strstr(s,"nND"))break;
+            if(strstr(s,"EnD"))break;
+
+            fprintf(myFileWrite,"%s\n",s);
+        }while(1);
+        fclose(myFileWrite);
+    }perror("ERROR in oppening file");
+}
+void myAdd(char *filename)
+{
+    char s[100];
+    
 }
