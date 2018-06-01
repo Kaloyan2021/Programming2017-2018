@@ -17,7 +17,7 @@ void main(){
         switch(op)
         {
             case 1:
-            /*
+                /*
                 fclose(myFile);
                 myFile = fopen(filename,"w");
                 if(fgets(s,99,myFile))
@@ -26,7 +26,6 @@ void main(){
                     gets(s);
                     fprintf(myFile,"%s",s);
                 }*/
-                
                 break;
             case 2:
                 fclose(myFile);
