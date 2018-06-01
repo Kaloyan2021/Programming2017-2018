@@ -34,7 +34,7 @@ void main(){
             printf("\nVuvedi na uchenik %d ocenka %d ",s[ i ].num, j+1);
             do{
                 scanf("%d",&s[ i ].marks[ j ]);
-                if (s[i].marks[j] < 2 || s[i].marks[j] > 6) printf("\nTry again");
+                if (s[i].marks[j] < 2 || s[i].marks[j] > 6) printf("\nTry again ");
             }while (s[i].marks[j] < 2 || s[i].marks[j] > 6);
             s[ i ].avr = s[ i ].avr + s[ i ].marks[ j ];
         }
