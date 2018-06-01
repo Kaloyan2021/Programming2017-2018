@@ -5,6 +5,8 @@
 FILE *myFile;
 
 int opt();
+void w(char *);
+void r(char *);
 
 void main(){
     char filename[100], s[100];
@@ -17,24 +19,12 @@ void main(){
         switch(op)
         {
             case 1:
-                /*
                 fclose(myFile);
-                myFile = fopen(filename,"w");
-                if(fgets(s,99,myFile))
-                {
-                    printf("\nWhat is that you want to be saved.");
-                    gets(s);
-                    fprintf(myFile,"%s",s);
-                }*/
+                w(filename);
                 break;
             case 2:
                 fclose(myFile);
-                myFile = fopen(filename,"r");
-                while(!feof(myFile))
-                {
-                    if(fgets(s,99,myFile))
-                        printf("%s",s);
-                }
+                r(filename);
                 break;
             case 3:
                 break;
@@ -88,4 +78,28 @@ int opt(){
 
     }while(c != 13/* || c != 27*/);
     return op;
+}
+
+void w(char *filename)
+{
+    char s[100];
+    myFile = fopen(filename,"w");
+    if(fgets(s,99,myFile))
+    {
+        printf("\nWhat is that you want to be saved.");
+        gets(s);
+        fprintf(myFile,"%s",s);
+    }
+}
+
+
+void r(char *filename)
+{
+    char s[100];
+    myFile = fopen(filename,"r");
+    while(!feof(myFile))
+    {
+        if(fgets(s,99,myFile))
+            printf("%s",s);
+    }
 }
