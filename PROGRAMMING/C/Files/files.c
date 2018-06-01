@@ -100,6 +100,6 @@ void r(char *filename)
     while(!feof(myFile))
     {
         if(fgets(s,99,myFile))
-            printf("%s",s);
+            printf("\n%s",s);
     }
 }
