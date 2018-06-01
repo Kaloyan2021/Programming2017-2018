@@ -24,7 +24,7 @@ void myOpt(int op);
 
 void main(){
     int c;
-    char s[100],filename[100];
+    char s[100], filename[100];
     int op = 1, choice = 1;
     printf("\n Path - ");
     gets(filename);
@@ -123,7 +123,11 @@ void myWrite(char *filename)
     myFileWrite = fopen(filename,"w");
     if(myFileWrite)
     {
-        printf("Write what you wish to write, to end write 'end', 'END' or something in between or simply");
+        printf
+        (
+            "Write what you wish to write, to end write 'end',
+            'END' or something in between"
+        );
         printf("\n");
         do
         {
