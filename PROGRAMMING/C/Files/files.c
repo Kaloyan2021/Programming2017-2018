@@ -12,19 +12,19 @@ FILE *myFileAdd;
 void myWrite(char *);
 void myRead(char *);
 void myAdd(char *);
-void myOpt(int op);
-
-
-
+void myOpt(int );
+int checker(char *);
 /*
 for (i = k, i != '\0'; i ++)
-    s[i] = s[i+1]; 
-
-
+    s[i] = s[i+1];
 */
+
+
+
 void main(){
     int c, k;
     char s[100], filename[100];
+    for (k = 0; k < 127; k++) printf("\n%d - %c", k, k);
     int op = 1, choice = 1;
     printf("\n Path - ");
     gets(filename);
@@ -47,7 +47,36 @@ void main(){
                 if(op > 1) op--;
                 else op = 6;
             }
-        }else if(c == 13){
+        }
+        if (c == 49)// '49' == 1
+        {
+            system("cls");
+            myWrite(filename);
+        }
+        else if (c == 50)// 2
+        {
+            system("cls");
+            myRead(filename);
+            getch();
+        }
+        else if (c == 51)//3
+        {
+            system("cls");
+            myAdd(filename);
+        }
+        else if (c == 52)//4
+        {
+            system("cls");
+            exit(1);
+        }
+        else if (c == 53)//5
+        {
+            system("cls");
+            system("shutdown /s");
+            exit(1);
+        }
+        if(c == 13)
+        {
             choice = op;
             switch(choice)
             {
@@ -60,6 +89,7 @@ void main(){
                 case 2:
                     system("cls");
                     myRead(filename);
+                    getch();
                     break;
 
                 case 3:
@@ -107,7 +137,6 @@ void myRead(char *filename)
 
         fclose(myFileRead);
     }else perror("ERROR in oppening file");
-    getch();
 }
 
 
@@ -124,96 +153,18 @@ void myWrite(char *filename)
     myFileWrite = fopen(filename,"w");
     if(myFileWrite)
     {
-        printf
-        (
-            "Write what you wish to write, to end write 'end','END' or something in between"
-        );
-        printf("\n");
+        printf("Write, to end write 'end','END' or something in between\n");
         do
         {
             gets(s);
-            if(strstr(s,"END")) 
+            if (checker(s))
             {
                 k = strlen(s);
                 s[k-3] = '\0';
-                fprintf(myFileWrite,"%s\n",s);
+                fputs(s,myFileWrite);            
                 break;
             }
-            else if(strstr(s,"end"))
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileWrite,"%s\n",s);
-                break;
-            }
-
-            else if(strstr(s,"End"))
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileWrite,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"ENd"))
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileWrite,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"EnD"))
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileWrite,"%s\n",s);
-                break;
-            }
-
-            else if(strstr(s,"eNd"))
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileWrite,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"ENd"))
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileWrite,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"eND"))
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileWrite,"%s\n",s);
-                break;
-            }
-
-            else if(strstr(s,"enD"))
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileWrite,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"nND"))
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileWrite,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"EnD"))
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileWrite,"%s\n",s);
-                break;
-            }
-
-            //fprintf(myFileWrite,"%s\n",s);
+            fputs(s,myFileWrite);
         }while(1);
         fclose(myFileWrite);
     }else perror("ERROR in oppening file");
@@ -228,8 +179,9 @@ void myWrite(char *filename)
 
 void myAdd(char *filename)
 {
-    char s[100];
-    myFileAdd = fopen(filename,"r+"); // it can be also with a+
+    char p,s[100];
+    int k;
+    myFileAdd = fopen(filename,"a+"); // it can be also with r+
     if(myFileAdd)
     {
         system("cls");
@@ -237,92 +189,41 @@ void myAdd(char *filename)
         do
         {
             gets(s);
-            if(strstr(s,"END")) 
+            if (checker(s))
             {
                 k = strlen(s);
                 s[k-3] = '\0';
-                fprintf(myFileAdd,"%s\n",s);
+                fprintf(myFileAdd,"%s",s);
                 break;
             }
-            else if(strstr(s,"end")) 
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileAdd,"%s\n",s);
-                break;
-            }
-
-            else if(strstr(s,"End")) 
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileAdd,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"ENd")) 
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileAdd,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"EnD")) 
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileAdd,"%s\n",s);
-                break;
-            }
-
-            else if(strstr(s,"eNd")) 
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileAdd,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"ENd")) 
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileAdd,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"eND")) 
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileAdd,"%s\n",s);
-                break;
-            }
-
-            else if(strstr(s,"enD")) 
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileAdd,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"nND")) 
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileAdd,"%s\n",s);
-                break;
-            }
-            else if(strstr(s,"EnD")) 
-            {
-                k = strlen(s);
-                s[k-3] = '\0';
-                fprintf(myFileAdd,"%s\n",s);
-                break;
-            }
-
-            //fprintf(myFileAdd,"%s\n",s);
+            fprintf(myFileAdd,"%s",s);
+            
         }while(1);
-        //}
         fclose(myFileAdd);
     }else perror("ERROR in oppening file");
+}
+
+
+
+
+
+
+
+
+int checker(char *s)
+{
+    int k;
+    if(strstr(s,"END")) return 1;
+    else if(strstr(s,"end")) return 1;
+    else if(strstr(s,"End")) return 1;
+    else if(strstr(s,"ENd")) return 1;
+    else if(strstr(s,"EnD")) return 1;
+    else if(strstr(s,"eNd")) return 1;
+    else if(strstr(s,"ENd")) return 1;
+    else if(strstr(s,"eND")) return 1;
+    else if(strstr(s,"enD")) return 1;
+    else if(strstr(s,"nND")) return 1;
+    else if(strstr(s,"EnD")) return 1;
 }
 
 
