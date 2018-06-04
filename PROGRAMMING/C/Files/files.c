@@ -24,7 +24,6 @@ for (i = k, i != '\0'; i ++)
 void main(){
     int c, k;
     char s[100], filename[100];
-    for (k = 0; k < 127; k++) printf("\n%d - %c", k, k);
     int op = 1, choice = 1;
     printf("\n Path - ");
     gets(filename);
@@ -161,11 +160,11 @@ void myWrite(char *filename)
             {
                 k = strlen(s);
                 s[k-3] = '\0';
-                fputs(s,myFileWrite);            
+                fprintf(myFileWrite,"%s",s);
                 break;
             }
-            fputs(s,myFileWrite);
-        }while(1);
+            fprintf(myFileWrite,"%s",s);
+            }while(1);
         fclose(myFileWrite);
     }else perror("ERROR in oppening file");
 }
@@ -213,7 +212,7 @@ void myAdd(char *filename)
 int checker(char *s)
 {
     int k;
-    if(strstr(s,"END")) return 1;
+    if(strstr(s,"END")) return 1;/*
     else if(strstr(s,"end")) return 1;
     else if(strstr(s,"End")) return 1;
     else if(strstr(s,"ENd")) return 1;
@@ -223,7 +222,7 @@ int checker(char *s)
     else if(strstr(s,"eND")) return 1;
     else if(strstr(s,"enD")) return 1;
     else if(strstr(s,"nND")) return 1;
-    else if(strstr(s,"EnD")) return 1;
+    else if(strstr(s,"EnD")) return 1;*/
 }
 
 
