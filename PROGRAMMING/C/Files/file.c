@@ -70,6 +70,33 @@ void main(){
             system("shutdown /s");
             exit(1);
         }
+        if (c == 49)// '49' == 1
+        {
+            system("cls");
+            myWrite(filename);
+        }
+        else if (c == 50)// 2
+        {
+            system("cls");
+            myRead(filename);
+            getch();
+        }
+        else if (c == 51)//3
+        {
+            system("cls");
+            myAdd(filename);
+        }
+        else if (c == 52)//4
+        {
+            system("cls");
+            exit(1);
+        }
+        else if (c == 53)//5
+        {
+            system("cls");
+            system("shutdown /s");
+            exit(1);
+        }
         if(c == 13){
             choice = op;
             switch(choice)

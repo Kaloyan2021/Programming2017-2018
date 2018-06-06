@@ -9,7 +9,7 @@ typedef struct{
     int num, marks[maxbrp];
     char name[maxbru];
     float avr;
-    }tst;
+}tst;
 
 void srtN(tst *, int, int);
 void srtD(tst *, int, int);
@@ -168,7 +168,3 @@ void yes_nochoose(int *ok, tst *s, int n, int m){
     }while(c!=13);
     if (op == 2) ok = 0;
 }
-
-
-
-

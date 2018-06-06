@@ -14,10 +14,12 @@ void myRead(char *);
 void myAdd(char *);
 void myOpt(int );
 int checker(char *);
-/*
-for (i = k, i != '\0'; i ++)
-    s[i] = s[i+1];
-*/
+
+
+
+
+
+
 
 
 
@@ -25,6 +27,7 @@ void main(){
     int c, k;
     char s[100], filename[100];
     int op = 1, choice = 1;
+
     printf("\n Path - ");
     gets(filename);
     printf("\n\t\t\tUse Up/Down Arrow to Begin");
@@ -98,7 +101,7 @@ void main(){
 
                 case 4:
                     system("cls");
-                    printf("\nChoose a Path to your file");
+                    printf("\nPath -");
                     gets(filename);
                     break;
 
@@ -108,6 +111,7 @@ void main(){
                 case 6:
                     system("shutdown /s");
                     exit(1);
+                default: printf("ERROR: switch errors");
             }
         }
 
@@ -147,7 +151,7 @@ void myRead(char *filename)
 
 void myWrite(char *filename)
 {
-    char s[100];
+    char s[100], c;
     int k;
     myFileWrite = fopen(filename,"w");
     if(myFileWrite)
