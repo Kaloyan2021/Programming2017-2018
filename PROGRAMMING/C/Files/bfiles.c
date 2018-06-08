@@ -5,7 +5,7 @@
 #define maxSubj 20
 #define maxSymb 20
 #define maxStud 100
-FILE *myFileWriteB;
+FILE *myFileWriteB, *myFileReadB;
 typedef struct{
     int num, marks[maxSubj];
     char name[maxSymb];
@@ -14,8 +14,8 @@ typedef struct{
 
 void main(){
     myFileWriteB = fopen("bfile.txt","wb");
-    tst s[maxStud];
-    int k,l, j[maxStud], i = 0, op = 0;
+    tst s[maxStud], r[maxStud];
+    int k,l, j[maxStud], i = 0, op = 0, l;
     char c;
     while(i < 101){
         s[ i ].avr = 0;
@@ -37,6 +37,7 @@ void main(){
         s[i].avr = s[i].avr / j[i];
         i++;
     }
+    l = i;
     for (;i != 0; i--){
             printf("\n %3d %-41s ", s[i].num, s[i].name);
             for (; j[i] != 0; j[i]--){
@@ -44,13 +45,7 @@ void main(){
             }
             printf("%6.2f", s[i].avr);
     }
-    for (;i != 0; i--){
-            fwrite(&s, sizeof(s), 1, myFileWriteB);
-            for (; j[i] != 0; j[i]--){
-                fwrite(&s, sizeof(s), 1, myFileWriteB);
-            }
-            fwrite(&s, sizeof(s), 1, myFileWriteB);
-    }
+    fwrite(&s, sizeof(s), 1, myFileWriteB);
     //for (; i != 0; i--)
     //{
     //    for (k = s[i].marks[j]; j != 0; j--)
@@ -59,5 +54,8 @@ void main(){
     //    }
     //}
     fclose(myFileWriteB);
+    myFileReadB = fopen("bfile.txt","rb");
+    fread(&)
 }
+
 

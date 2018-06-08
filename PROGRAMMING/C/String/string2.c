@@ -35,15 +35,11 @@ int main(){
     for (int i = 0; i < n; i++) printf("\nPerson %d is with name %s", i + 1, names[i]);
     char h[21];
     for (int i = 1; i < n; i++){
-       // memset(h,0,21);
-        for (int j = 0; j<n-i; j++){
-         //   memset(h,0,21);
-            if(strcmp(names[j], names[j+1])>0){
-                //for (int k = 0; names[i][k] != 0 && names[i + 1][k] != 0; k++){
-                    strcpy(h,names[j]);
-                    strcpy(names[j], names[j + 1]);
-                    strcpy(names[j + 1], h);
-                //}
+        for (int j = 0; j < n - i; j++){
+            if(strcmp(names[j], names[j+1]) > 0){
+                strcpy(h, names[j]);
+                strcpy(names[j], names[j + 1]);
+                strcpy(names[j + 1], h);
             }
         }
     }

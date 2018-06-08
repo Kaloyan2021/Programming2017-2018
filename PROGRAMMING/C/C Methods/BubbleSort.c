@@ -7,7 +7,6 @@ int main()
 {
     float arr[size], sorted, tmp;
     for(int i = 0; i < size; i++) arr[i] = rand();
-    //sorting
     for (int i = 1; i < size; i++){
         sorted = 1;
         for (int j=0; j<size-i;j++){
