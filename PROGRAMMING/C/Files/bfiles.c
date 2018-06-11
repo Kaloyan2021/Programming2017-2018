@@ -13,12 +13,12 @@ typedef struct{
 }tst;
 
 void main(){
-    myFileWriteB = fopen("bfile.txt","wb");
+    myFileWriteB = fopen("bfile.bin","wb");
     tst s[maxStud], r[maxStud];
-    int k,l, j[maxStud], i = 0, op = 0, l;
+    int k,l, j[maxStud], i = 0, op = 0;
     char c;
     while(i < 101){
-        s[ i ].avr = 0;
+        s[i].avr = 0;
         printf("\nNomer na uchenika - ");
         scanf("%d",&s[i].num);
         getchar();
@@ -38,24 +38,28 @@ void main(){
         i++;
     }
     l = i;
-    for (;i != 0; i--){
-            printf("\n %3d %-41s ", s[i].num, s[i].name);
-            for (; j[i] != 0; j[i]--){
-                printf("%3d",s[i].marks[j[i]]);
-            }
-            printf("%6.2f", s[i].avr);
-    }
     fwrite(&s, sizeof(s), 1, myFileWriteB);
-    //for (; i != 0; i--)
-    //{
-    //    for (k = s[i].marks[j]; j != 0; j--)
-    //    {
-
-    //    }
-    //}
     fclose(myFileWriteB);
-    myFileReadB = fopen("bfile.txt","rb");
-    fread(&)
+
+
+    int spaces = j[0];
+    for (int counter = 1; counter < i - 1; counter++)
+        if(j[counter] > spaces) spaces = j[counter];
+
+
+    myFileReadB = fopen("bfile.bin","rb");
+    fread(&r, sizeof(r), 1, myFileReadB);
+
+    for (int z = 0; z < l; z++){
+        printf("\n %3d. %-41s ", r[z].num, r[z].name);
+        for (i = 0; i < spaces; i++){
+            if (r[z].marks[i] == 0) printf(" - ");
+            else
+                printf("%3d",r[z].marks[i]);
+        }
+        printf("%6.2f", r[z].avr);
+    }
+
 }
 
 
