@@ -5,6 +5,8 @@
 #define maxSubj 20
 #define maxSymb 20
 #define maxStud 100
+
+
 FILE *myFileWriteB, *myFileReadB;
 typedef struct{
     int num, marks[maxSubj];

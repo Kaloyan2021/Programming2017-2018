@@ -275,15 +275,14 @@ void myAdd(char *filename)
 {
     char s[100];
     int k;
-    myFileAdd = fopen(filename,"a+"); // it can be also with a+
+    myFileAdd = fopen(filename,"r+");
     if(myFileAdd)
     {
         system("cls");
         myRead(filename);
         do
         {
-            gets(s);
-            //if(strstr(s,13)) fprintf(myFileWrite,"\n");            
+            gets(s);        
             if(strstr(s," END"))
             {
                 k = strlen(s);

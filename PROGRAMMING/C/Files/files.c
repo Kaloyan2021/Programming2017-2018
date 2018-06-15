@@ -71,7 +71,12 @@ void main(){
             system("cls");
             exit(1);
         }
-        else if (c == 53)//5
+        else if (c == 53)
+        {
+            system("cls");
+            exit(1);
+        }
+        else if (c == 54)//5
         {
             system("cls");
             system("shutdown /s");
@@ -216,17 +221,17 @@ void myAdd(char *filename)
 int checker(char *s)
 {
     int k;
-    if(strstr(s,"END")) return 1;/*
-    else if(strstr(s,"end")) return 1;
-    else if(strstr(s,"End")) return 1;
-    else if(strstr(s,"ENd")) return 1;
-    else if(strstr(s,"EnD")) return 1;
-    else if(strstr(s,"eNd")) return 1;
-    else if(strstr(s,"ENd")) return 1;
-    else if(strstr(s,"eND")) return 1;
-    else if(strstr(s,"enD")) return 1;
-    else if(strstr(s,"nND")) return 1;
-    else if(strstr(s,"EnD")) return 1;*/
+    if(strstr(s," END")) return 1;
+    else if(strstr(s," end")) return 1;
+    else if(strstr(s," End")) return 1;
+    else if(strstr(s," ENd")) return 1;
+    else if(strstr(s," EnD")) return 1;
+    else if(strstr(s," eNd")) return 1;
+    else if(strstr(s," ENd")) return 1;
+    else if(strstr(s," eND")) return 1;
+    else if(strstr(s," enD")) return 1;
+    else if(strstr(s," nND")) return 1;
+    else if(strstr(s," EnD")) return 1;
 }
 
 
