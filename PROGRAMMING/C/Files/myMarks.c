@@ -1,31 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <string.h>
+
+
 
 FILE *marksFileR, *marksFileW;
+
+void myMarksOut(char *);
+void myMarksInp(char *);
+void myOpt(int);
 
 typedef struct
 {
     char name[20];
-    int BG[20],     AE[20], 
-        MATH[20],   INF[20], 
-        IT[20],     HIST[20], 
-        GEO[20],    PL[20], 
-        BIO[20],    PHIS[20], 
-        CHEM[20],   PE[20], 
-        EEI[20],    EE[20], 
-        TD[20],     PROGR[20];
+    char subj[30];
+    int marks[100], subjNumb;
 }myM;
 
 void main()
 {
     myM Turm2, Turm1;
-    int op;
-    char c,marksFile[20];
+    int op = 1;
+    char c, marksFile[40];
     printf("\n Path - ");
     gets(marksFile);
-    do{
-        system("cls");
+    getchar();
+    do{ //menu to say what you want(KEYBOARD)
+        //system("cls");
         printf("\n\t\t\tUse Up/Down Arrow to Begin");
         myOpt(op);
         c = getch();
@@ -46,12 +48,12 @@ void main()
         if (c == 49)// '49' == 1
         {
             system("cls");
-            myMarksInp(marksFile);
+            myMarksInp(marksFile); //Inputing marks and subjects
         }
         else if (c == 50)// 2
         {
             system("cls");
-            myMarksOut(marksFile);
+            myMarksOut(marksFile); //Placing marks(average included) for each subject
             getch();
         }
         else if (c == 51)//3
@@ -67,12 +69,12 @@ void main()
 
                 case 1:
                     system("cls");
-                    myMarksInp(marksFile);
+                    myMarksInp(marksFile); //Inputing marks and subjects
                     break;
 
                 case 2:
                     system("cls");
-                    myMarksOut(marksFile);
+                    myMarksOut(marksFile); //Placing marks(average included) for each subject
                     getch();
                     break;
 
@@ -82,10 +84,10 @@ void main()
             }
         }
 
-    }while(1 /*choice != 5*/);
+    }while(1);
 }
 
-void myOpt(int op)
+void myOpt(int op) //given options
 {
     if (op == 1)
     {
@@ -105,4 +107,61 @@ void myOpt(int op)
         printf("\n   2.VIEW");
         printf("\n > 3.EXIT");
     }
-]
+}
+
+
+void myMarksInp(char *filename)
+{
+    myM s[100];
+    int j, i = 0;
+    marksFileW = fopen(filename,"wb");
+    while(1)
+    {
+        strcpy(s[i].name, "Kaloyan");
+        printf("\n Input Subject Number");
+        scanf("%d", &s[i].subjNumb);
+        if (s[i].subjNumb == 0) break;
+        printf("\n Input Subject Name - ");
+        gets(s[i].subj);
+        printf("\n Input Mark for %s", s[i].subj);
+        j = 0;
+        while(1)
+        {
+            scanf("%d", &s[i].marks[j]);
+            if(s[i].marks[j] == 0) break;
+            j++;
+        }
+        i++;
+    }
+    fwrite(&s, sizeof(s), 1, marksFileW);
+    fclose(marksFileW);
+}
+
+
+void myMarksOut(char *filename)
+{
+    myM s[100];
+    int j, i = 0;
+    marksFileR = fopen(filename,"rb");
+    fread(&s, sizeof(s),1,marksFileR);
+    while(s[i].subjNumb != 0)
+    {
+        printf("\n %s - ", s[i].subj);
+        while(0 != s[i].marks[j])
+        {
+            printf("  %d;", s[i].marks[j]);
+        }
+    }
+    fclose(marksFileR);
+}
+
+/*
+
+typedef struct
+{
+    char name[20];
+    char subj;
+    int marks[100];
+}myM;
+
+*/

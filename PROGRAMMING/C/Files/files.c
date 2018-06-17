@@ -30,6 +30,7 @@ void main(){
 
     printf("\n Path - ");
     gets(filename);
+    if(!(strstr(filename,".txt"))) exit(1);
     printf("\n\t\t\tUse Up/Down Arrow to Begin");
     do{
         system("cls");
@@ -106,8 +107,9 @@ void main(){
 
                 case 4:
                     system("cls");
-                    printf("\nPath -");
+                    printf("\nPath - ");
                     gets(filename);
+                    if(!(strstr(filename,".txt"))) exit(1);
                     break;
 
                 case 5:
@@ -157,25 +159,25 @@ void myRead(char *filename)
 void myWrite(char *filename)
 {
     char s[100], c;
-    int k;
-    myFileWrite = fopen(filename,"w");
-    if(myFileWrite)
-    {
-        printf("Write, to end write 'end','END' or something in between\n");
-        do
+    int k;   
+        myFileWrite = fopen(filename,"w");
+        if(myFileWrite)
         {
-            gets(s);
-            if (checker(s))
+            printf("Write, to end write 'end','END' or something in between\n");
+            do
             {
-                k = strlen(s);
-                s[k-3] = '\0';
+                gets(s);
+                if (checker(s))
+                {
+                    k = strlen(s);
+                    s[k-3] = '\0';
+                    fprintf(myFileWrite,"%s",s);
+                    break;
+                }
                 fprintf(myFileWrite,"%s",s);
-                break;
-            }
-            fprintf(myFileWrite,"%s",s);
-            }while(1);
-        fclose(myFileWrite);
-    }else perror("ERROR in oppening file");
+                }while(1);
+            fclose(myFileWrite);
+        }else perror("ERROR in oppening file");
 }
 
 

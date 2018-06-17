@@ -19,16 +19,16 @@ void main(){
     tst s[maxStud], r[maxStud];
     int k,l, j[maxStud], i = 0, op = 0;
     char c;
-    while(i < 101){
+    while(i < 101){ //input name and number
         s[i].avr = 0;
         printf("\nNomer na uchenika - ");
         scanf("%d",&s[i].num);
         getchar();
-        if(s[i].num == 0) break;// break if number of student is 0
+        if(s[i].num == 0) break; // break if number of student is 0
         printf("\nName of studend with No %d - ", s[i].num);
         gets(s[i].name);
         j[i] = 0;
-        do{
+        do{ //input marks
             printf("\nVuvedi ocenka %d na %s - ", j[i] + 1, s[i].name);
             scanf("%d",&s[i].marks[j[i]]);
             if (s[i].marks[j[i]] == 0) break;
@@ -36,8 +36,8 @@ void main(){
             s[i].avr = s[i].avr + s[i].marks[j[i]];
             j[i]++;
         }while(1);
-        s[i].avr = s[i].avr / j[i];
-        i++;
+        s[i].avr = s[i].avr / j[i]; //find average
+        i++; //next student
     }
     l = i;
     fwrite(&s, sizeof(s), 1, myFileWriteB);
@@ -47,8 +47,6 @@ void main(){
     int spaces = j[0];
     for (int counter = 1; counter < i - 1; counter++)
         if(j[counter] > spaces) spaces = j[counter];
-
-
     myFileReadB = fopen("bfile.bin","rb");
     fread(&r, sizeof(r), 1, myFileReadB);
 
