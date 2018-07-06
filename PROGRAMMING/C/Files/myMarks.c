@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
 #include <string.h>
+#include <conio.h>
 
 
 
@@ -13,21 +13,23 @@ void myOpt(int);
 
 typedef struct
 {
-    char name[20];
-    char subj[30];
+    char name[20], subj[30];
     int marks[100], subjNumb;
+    float avr;
 }myM;
 
 void main()
 {
     myM Turm2, Turm1;
-    int op = 1;
+    int op = 1, choice = 1;
     char c, marksFile[40];
     printf("\n Path - ");
     gets(marksFile);
-    getchar();
+    if(!(strstr(marksFile,".bin"))) exit(1);
+
+    printf("\n\t\t\tUse Up/Down Arrows to Begin")
     do{ //menu to say what you want(KEYBOARD)
-        //system("cls");
+        system("cls");
         printf("\n\t\t\tUse Up/Down Arrow to Begin");
         myOpt(op);
         c = getch();
@@ -45,6 +47,16 @@ void main()
                 else op = 3;
             }
         }
+        if(c == 's')
+        {
+            if (op < 3) op++;
+            else op = 1;
+        }
+        else if(c == 'w')
+        {
+            if(op > 1) op--;
+            else op = 3;
+        }
         if (c == 49)// '49' == 1
         {
             system("cls");
@@ -53,7 +65,7 @@ void main()
         else if (c == 50)// 2
         {
             system("cls");
-            myMarksOut(marksFile); //Placing marks(average included) for each subject
+            myMarksOut(marksFile); //Outputing marks(average included) for each subject
             getch();
         }
         else if (c == 51)//3
@@ -63,7 +75,7 @@ void main()
         }
         if(c == 13)
         {
-            int choice = op;
+            choice = op;
             switch(choice)
             {
 
@@ -81,32 +93,20 @@ void main()
                 case 3:
                     system("cls");
                     exit(1);
+                default: perror("Switch Error");
             }
         }
+        else printf("\nWOW");
+
 
     }while(1);
 }
 
 void myOpt(int op) //given options
 {
-    if (op == 1)
-    {
-        printf("\n > 1.ADD");
-        printf("\n   2.VIEW");
-        printf("\n   5.EXIT");
-    }
-    else if (op == 2)
-    {
-        printf("\n   1.ADD");
-        printf("\n > 2.VIEW");
-        printf("\n   3.EXIT");
-    }
-    else
-    {
-        printf("\n   1.ADD");
-        printf("\n   2.VIEW");
-        printf("\n > 3.EXIT");
-    }
+    if (op == 1) printf("\n > 1.ADD\n   2.VIEW\n   3.EXIT");
+    else if (op == 2) printf("\n   1.ADD\n > 2.VIEW\n   3.EXIT");
+    else printf("\n   1.ADD\n   2.VIEW\n > 3.EXIT");
 }
 
 
@@ -118,21 +118,25 @@ void myMarksInp(char *filename)
     while(1)
     {
         strcpy(s[i].name, "Kaloyan");
-        printf("\n Input Subject Number");
+        printf("\n Input Subject Number ");
         scanf("%d", &s[i].subjNumb);
         if (s[i].subjNumb == 0) break;
         printf("\n Input Subject Name - ");
+        getchar();
         gets(s[i].subj);
-        printf("\n Input Mark for %s", s[i].subj);
+        printf("\n Input Mark %d for %s ", i+1, s[i].subj);
         j = 0;
         while(1)
         {
             scanf("%d", &s[i].marks[j]);
             if(s[i].marks[j] == 0) break;
+            s[i].avr += s[i].marks[j];
             j++;
         }
+        s[i].avr = s[i].avr / i;
         i++;
     }
+    #define maxSubj i
     fwrite(&s, sizeof(s), 1, marksFileW);
     fclose(marksFileW);
 }
@@ -141,27 +145,19 @@ void myMarksInp(char *filename)
 void myMarksOut(char *filename)
 {
     myM s[100];
-    int j, i = 0;
+    int j, i;
     marksFileR = fopen(filename,"rb");
     fread(&s, sizeof(s),1,marksFileR);
-    while(s[i].subjNumb != 0)
+    printf("\n%s Has theese marks:\n\n",s[i].name);
+    for(i = 0; 0 != s[i].subjNumb; i++)
     {
-        printf("\n %s - ", s[i].subj);
-        while(0 != s[i].marks[j])
+        printf("\n %-10s - ", s[i].subj);
+        for(j = 0;0 != s[i].marks[j];j++)
         {
             printf("  %d;", s[i].marks[j]);
         }
+        printf("  %3f", s[i].avr);
+
     }
     fclose(marksFileR);
 }
-
-/*
-
-typedef struct
-{
-    char name[20];
-    char subj;
-    int marks[100];
-}myM;
-
-*/

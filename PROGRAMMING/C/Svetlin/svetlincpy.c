@@ -5,11 +5,11 @@
 int main()
 {
     char a[100], b[100];
-    int i, n1;
+    int i, n;
     gets(a);
-    n1 = strlen(a);
-    for(i = 0; i < n1; i++) b[i] = a[i];
-    b[n1] = 0;
+    n = strlen(a);
+    for(i = 0; i < n; i++) b[i] = a[i];
+    b[i] = 0;
     printf("%s",b);
     return 0;
 }

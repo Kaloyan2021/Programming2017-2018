@@ -33,7 +33,7 @@ void main(){
             scanf("%d",&s[i].marks[j[i]]);
             if (s[i].marks[j[i]] == 0) break;
             if (j[i] >= maxSubj) break;
-            s[i].avr = s[i].avr + s[i].marks[j[i]];
+            s[i].avr = s[i].avr + s[i].marks[j[i]]; 
             j[i]++;
         }while(1);
         s[i].avr = s[i].avr / j[i]; //find average

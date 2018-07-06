@@ -15,8 +15,7 @@ typedef struct
 
 void main()
 {
-    int i = 0, choice, biggest, m;
-    char eldest[20];
+    int i = 0, choice, m;
     student s[100], max;
     do{
         system("cls");
