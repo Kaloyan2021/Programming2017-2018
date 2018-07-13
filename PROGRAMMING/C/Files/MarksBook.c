@@ -26,10 +26,12 @@ void main()
         printf("\nAsking for grade - ");
             scanf("%d",&myBook.grade);
         printf("\nAsking for class - ");
+            getchar();
             scanf("%c",&myBook.class);
         printf("\nAsking for number - ");
             scanf("%d",&myBook.num);
         printf("\nAsking for subject - ");
+            getchar();
             gets(myBook.subj[i]);
         printf("\nAsking for teacher - ");
             gets(myBook.teacher[i]);
@@ -45,19 +47,22 @@ void main()
             else if(myBook.marks[i][j] == 2) myBook.money -= 25;
             else myBook.money += 0;
             if(myBook.marks[i][j] < 5) k++;
-            j++; //For Each Subject
-            z++; //For All Subjects
+            j++; //Marks For Each Subject
+            z++; //Marks For All Subjects
         }
         if (k > 0) printf("\nYou can make it better with %s", myBook.subj[i]);
         else printf("\nYou're fine for now, keep the good work up");
         myBook.avrEach[i][0] /= j+1;
-        i++;
+        i++; //All Subjects
     }
     myBook.avrAll /= z;
     if(myBook.avrAll > 5.5) printf("\nHave scholarship");
     else printf("\nYou don't have scholarship");
 
+    //Output Part(Hard Part)
 
+    printf("\nMarksBook For A Single Turm ");
+    printf("\n%-24s %d%c No %d", myBook.name, myBook.grade, myBook.class, myBook.num);
 
 }
 
