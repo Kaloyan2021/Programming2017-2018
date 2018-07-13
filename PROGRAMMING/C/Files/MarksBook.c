@@ -45,8 +45,8 @@ void main()
             else if(myBook.marks[i][j] == 2) myBook.money -= 25;
             else myBook.money += 0;
             if(myBook.marks[i][j] < 5) k++;
-            j++;
-            z++;
+            j++; //For Each Subject
+            z++; //For All Subjects
         }
         if (k > 0) printf("\nYou can make it better with %s", myBook.subj[i]);
         else printf("\nYou're fine for now, keep the good work up");
