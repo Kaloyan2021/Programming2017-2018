@@ -68,7 +68,7 @@ void main()
             myMarksOut(marksFile); //Outputing marks(average included) for each subject
             getch();
         }
-        else if (c == 51)//3
+        else if (c == 51)//3/52/53/54/55/58
         {
             system("cls");
             exit(1);
