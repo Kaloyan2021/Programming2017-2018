@@ -58,18 +58,20 @@ void main()
         }while((myBook.marks[i][j] >= 2 && myBook.marks[i][j] <= 6) && myBook.marks[i][j] != 0);
         i++; //All Subjects
     }
-    if (k > 0) printf("\nYou can make it better with %s", myBook.subj[i]);
-    else printf("\nYou're fine for now, keep the good work up");
     myBook.avrEach[i][0] /= j+1;
     myBook.avrAll /= z;
-    if(myBook.avrAll > 5.5) printf("\nHave scholarship");
-    else printf("\nYou don't have scholarship");
 
     //Output Part(Hard Part)
 
     printf("\nMarksBook For A Single Turm ");
-    printf("\n%-24s %d%c No %d", myBook.name, myBook.grade, myBook.class, myBook.num);
-
+    printf("\n\n%-24s %d %s No %d", myBook.name, myBook.grade, myBook.class, myBook.num);
+    for ( i = 0; !(strstr(myBook.subj[i],"done")); i++){
+        for (int l = 0; myBook.marks[i][l] != 0; l++) printf("\n%d",myBook.marks[i][l]);
+    }
+    if (k > 0) printf("\nYou can make it better with %s", myBook.subj[i]);
+    else printf("\nYou're fine for now, keep the good work up");
+    if(myBook.avrAll > 5.5) printf("\nHave scholarship");
+    else printf("\nYou don't have scholarship");
 }
 
 /*
