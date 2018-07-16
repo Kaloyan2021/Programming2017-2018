@@ -65,14 +65,14 @@ void main()
 
     printf("\nMarksBook For A Single Turm ");
     printf("\n\n%-24s %d %s No %d", myBook.name, myBook.grade, myBook.class, myBook.num);
-    for ( i = 0; !(strstr(myBook.subj[i],"done")); i++){
-        printf("%-10s",myBook.subj[i]);
-        for (int l = 0; myBook.marks[i][l] != 0; l++) printf("%d ",myBook.marks[i][l]);
+    for (i = 0; !(strstr(myBook.subj[i],"done")); i++) printf("\n%-5s",myBook.subj[i]);
+    for (int l = 0, i = 0; myBook.marks[l][i] != 0; i++){
+        for (;;l++) printf(" %d", myBook.marks[l][i]);
     }
-    if (k > 0) printf("\nYou can make it better with %s", myBook.subj[i]);
-    else printf("\nYou're fine for now, keep the good work up");
-    if(myBook.avrAll > 5.5) printf("\nHave scholarship");
-    else printf("\nYou don't have scholarship");
+    // if (k > 0) printf("\nYou can make it better with %s", myBook.subj[i]);
+    // else printf("\nYou're fine for now, keep the good work up");
+    // if(myBook.avrAll > 5.5) printf("\nHave scholarship");
+    // else printf("\nYou don't have scholarship");
 }
 
 /*
