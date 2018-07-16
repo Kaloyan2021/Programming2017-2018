@@ -64,10 +64,11 @@ void main()
     //Output Part(Hard Part)
 
     printf("\nMarksBook For A Single Turm ");
-    printf("\n\n%-24s %d %s No %d", myBook.name, myBook.grade, myBook.class, myBook.num);
-    for (i = 0; !(strstr(myBook.subj[i],"done")); i++) printf("\n%-5s",myBook.subj[i]);
-    for (int l = 0, i = 0; myBook.marks[l][i] != 0; i++){
-        for (;;l++) printf(" %d", myBook.marks[l][i]);
+    printf("\n\n%-24s %d %s No %d\n", myBook.name, myBook.grade, myBook.class, myBook.num);
+    for (i = 0; !(strstr(myBook.subj[i],"done")); i++) printf("%-5s",myBook.subj[i]);
+    printf("\n");
+    for (int l = 0, i = 0; myBook.marks[0][i] != 0; i++){
+        for (;!(strstr(myBook.subj[l],"done"));l++) printf(" %d", myBook.marks[l][i]);
     }
     // if (k > 0) printf("\nYou can make it better with %s", myBook.subj[i]);
     // else printf("\nYou're fine for now, keep the good work up");
