@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
+//#include <conio.h>
 
 #define maxMrks 100
 #define maxSubj 100
@@ -66,7 +66,8 @@ void main()
     printf("\nMarksBook For A Single Turm ");
     printf("\n\n%-24s %d %s No %d", myBook.name, myBook.grade, myBook.class, myBook.num);
     for ( i = 0; !(strstr(myBook.subj[i],"done")); i++){
-        for (int l = 0; myBook.marks[i][l] != 0; l++) printf("\n%d",myBook.marks[i][l]);
+        printf("%-10s",myBook.subj[i]);
+        for (int l = 0; myBook.marks[i][l] != 0; l++) printf("%d ",myBook.marks[i][l]);
     }
     if (k > 0) printf("\nYou can make it better with %s", myBook.subj[i]);
     else printf("\nYou're fine for now, keep the good work up");
